@@ -6,10 +6,10 @@
     <div class="col-md-4">
       <div class="card card-body">
         <h5>Laptop</h5>
-        <p class="text-muted">AReinstall Windows 11</p>
+        <p class="text-muted">A Reinstall Windows 11</p>
         <div class="d-flex align-items-center">
           <span class="mx-4">
-            <i class="bi bi-pen"></i>
+            <i class="bi bi-pen" data-bs-toggle="modal" data-bs-target="#editNotemodal"></i>
 </span>
 <span class="mx-3">
 
@@ -21,7 +21,7 @@
           </div>
 
 
-
+<!-- add note modal  -->
           <div class="modal fade" id="addNotemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -32,11 +32,11 @@
                 <div class="modal-body">
                   <form>
                     <div class="mb-3">
-                      <label for="recipient-name" class="col-form-label">Recipient:</label>
+                      <label for="recipient-name" class="col-form-label">Note Title:</label>
                       <input type="text" class="form-control" id="recipient-name">
                     </div>
                     <div class="mb-3">
-                      <label for="message-text" class="col-form-label">Message:</label>
+                      <label for="message-text" class="col-form-label">Note Description:</label>
                       <textarea class="form-control" id="message-text"></textarea>
                     </div>
                   </form>
@@ -48,4 +48,31 @@
       </div>
     </div>
   </div>
+<!-- edit notes modal -->
+<div class="modal fade" id="editNotemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Notes</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">note Title:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Note Description:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Update Note</button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
