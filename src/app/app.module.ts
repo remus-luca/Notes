@@ -7,6 +7,7 @@ import { NoteComponent } from './components/note/note.component';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { environment } from 'src/environments/environment';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, NoteComponent],
@@ -15,6 +16,7 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
