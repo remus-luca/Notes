@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Note } from 'src/app/note';
 import { NoteService } from 'src/app/services/note.service';
 
+
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
@@ -10,7 +11,9 @@ import { NoteService } from 'src/app/services/note.service';
 })
 export class NoteComponent implements OnInit {
   noteForm: FormGroup;
+  editForm: FormGroup;
   notesData: any = [];
+  noteDetails: any;
 
   noteObj: Note = {
     id: '',
@@ -23,6 +26,10 @@ export class NoteComponent implements OnInit {
       title: ['', Validators.required],
       description: ['', Validators.required],
     });
+    this.editForm = fb.group({
+      edit_title: ['', Validators.required],
+      edit_description: ['', Validators.required],
+    });
   }
 
   ngOnInit(): void {
@@ -31,7 +38,6 @@ export class NoteComponent implements OnInit {
 
   addNote() {
     const { value } = this.noteForm;
-    console.log(value);
     this.noteObj.id = '';
     this.noteObj.note_title = value.title;
     this.noteObj.note_desc = value.description;
@@ -46,8 +52,22 @@ export class NoteComponent implements OnInit {
       this.notesData = res;
     });
   }
+  getAllDetails(note: Note) {
+    this.noteDetails = note;
+  }
 
   deleteNote(note: Note) {
     this.noteService.deleteNote(note);
+  }
+
+  updateNote(note: Note) {
+    const { value } = this.editForm;
+    this.noteObj.id = note.id;
+    this.noteObj.note_title = value.edit_title;
+    this.noteObj.note_desc = value.edit_description;
+    this.noteService.updateNote(note, this.noteObj).then(() => {
+      alert('update succes');
+    });
+    this.editForm.reset();
   }
 }
