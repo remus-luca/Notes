@@ -66,7 +66,7 @@ export class NoteComponent implements OnInit {
     this.noteObj.note_title = value.edit_title;
     this.noteObj.note_desc = value.edit_description;
     this.noteService.updateNote(note, this.noteObj).then(() => {
-      alert('update succes');
+      alert('Updated successfully');
     });
     this.editForm.reset();
   }
